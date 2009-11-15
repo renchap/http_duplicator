@@ -1,0 +1,12 @@
+h1. HTTP Duplicator
+
+h2. Goal
+
+Be able to duplicate an HTTP query to two or more servers.
+
+* If the query succeed on all servers, return HTTP 200, with a list of the servers.
+* If the query fails on one or more servers, return HTTP 50X (504 if a timeout, or 503 if another error). The body of the request should contain a list the servers and the HTTP code returned, encoded in JSON
+
+h2. TODO
+
+* All :)
