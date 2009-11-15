@@ -45,14 +45,14 @@ class HTTP_Duplicator < EM::Connection
 
     in_deferred_loop do
       results = Array.new
-
+      
       backends.each do |backend|
         results << backend.send_request(
           :host => backend.host,
           :port => backend.port,
           :request => @http_request_uri,
           :verb => @http_request_method,
-          :content => @http_request_post_content,
+          :content => @http_post_content,
           :contenttype => @http_content_type,
           :querystring => @http_query_string
         )
@@ -77,7 +77,7 @@ class HTTP_Duplicator < EM::Connection
         else
           response.status = 503
         end
-        response.content = server_status.to_json
+        response.content = server_status.to_json+"\n"
         response.content_type 'application/json'
         response.send_response
       end
